@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- This is a client-side comment -->
+@* This is a server-side comment *@
+Some text
+@*
+    This is another server-side comment
+*@
+
+@{
+    string greet = "hello";
+    char gender = 'M';
+    double val = 12.3;
+
+    val = val * 100;
+}
+
+<p>@greet @gender @val</p>
+<p>@greet Jeff.  You are @gender. Value is @val.</p>
+
+@if (gender == 'M')
+{
+    <h3>Male</h3>
+}
+else
+{
+    <h3>Female</h3>
+}
+
+@for (int i = 2; i <= 20; i += 2)
+{
+    <span>@i</span>
+}
+
+@{
+    string[] names = { "Jeff", "Evelyn", "Darien", "Dana", "Dylan" };
+}
+
+<ul>
+    @foreach (var n in names)
+    {
+        <li>@n</li>
+    }
+</ul>
+
+@{
+    var foo = true;
+    var bar = "some value";
+}
+
+@if (foo)
+{
+    @*Plain Text  ERROR!*@
+}
+
+@if (foo)
+{
+    <text>Plain Text</text>
+}
+<br />
+@if (foo)
+{
+    @:Plain Text and @bar
+}
+<br />
+345 * 67 % 34 = @(345 * 67 % 34) 
+<br />
+@@ was escaped
+
+<p>@ViewData["SomeValue1"]</p>
+<p>@ViewBag.SomeValue1</p>
+<p>@ViewData["SomeValue2"]</p>
+<p>@ViewBag.SomeValue2</p>
+
+<partial name="_MyPartial" />
+
+@await  Component.InvokeAsync("Time")
